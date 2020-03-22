@@ -1,0 +1,16 @@
+.list-group-item {
+  background-color: transparent;
+  border: 2px solid #60757d;
+  border-radius: 10px !important;
+  color: #fff;
+}
+.form-control {
+  border-radius: 0;
+  height: 45px;
+  border: none;
+}
+@media (max-width: 574px) {
+  .card {
+    width: 20.5rem !important;
+  }
+}
