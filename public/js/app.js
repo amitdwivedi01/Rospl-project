@@ -3,14 +3,6 @@ const cases = document.getElementById("cases");
 const singleCountry = document.getElementById("singleCountry");
 const search = document.getElementById("search");
 
-const country = event => {
-  let x = event.keyCode;
-  if (x == 13) {
-    event.preventDefault();
-    enterCode();
-  }
-};
-
 fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/affected.php", {
   method: "GET",
   headers: {
@@ -43,7 +35,7 @@ fetch(
 )
   .then(res => res.json())
   .then(data => {
-    console.log(data);
+    // console.log(data);
     data.countries_stat.forEach(item => {
       cases.innerHTML += `
         <div class="col-md-6 col-lg-6 col-xl-4">
@@ -67,7 +59,7 @@ fetch(
     console.log(err);
   });
 
-const enterCode = () => {
+const enterCode = e => {
   fetch(
     `https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country=${search.value}`,
     {
@@ -80,12 +72,12 @@ const enterCode = () => {
   )
     .then(res => res.json())
     .then(data => {
-      console.log(data);
-      data.latest_stat_by_country.forEach(item => {
-        singleCountry.innerHTML += `
-                    <div class="card mt-5" style="width: 22rem;">
+      // console.log(data);
+      data.latest_stat_by_country.map(item => {
+        singleCountry.innerHTML = `
+                    <div class="card mt-5" id="countryCard" style="width: 22rem;">
                         <div class="card-body text-left">
-                            <h5 class="card-title text-center">${item.country_name}</h5>
+                            <h5 class="card-title text-center" id="countryName">${item.country_name}</h5>
                             <p class="card-text">cases: ${item.total_cases}</p>
                             <p class="card-text text-danger">deaths: ${item.total_deaths}</p>
                             <p class="card-text text-success">total recovered: ${item.total_recovered}</p>
