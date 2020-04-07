@@ -1,3 +1,6 @@
+body {
+  font-family: "Noto Sans TC", sans-serif;
+}
 .list-group-item {
   background-color: transparent;
   border: 2px solid #60757d;
@@ -9,8 +12,73 @@
   height: 45px;
   border: none;
 }
+#india {
+  padding: 1rem;
+}
+.card {
+  width: 11rem;
+}
+.card-body h4 {
+  font-weight: 500;
+}
+
+.card-body p {
+  font-weight: 300;
+}
+.confirmed {
+  border: 2px solid #ff073985;
+  background: transparent;
+  color: #ff0739b0;
+  border-radius: 10px;
+}
+.c-active {
+  border: 2px solid #078fff8e;
+  background: transparent;
+  color: #078fffb0;
+  border-radius: 10px;
+}
+.recovered {
+  border: 2px solid #07ff6686;
+  background: transparent;
+  color: #07ff66b0;
+  border-radius: 10px;
+}
+.deaths {
+  border: 2px solid #8080808c;
+  background: transparent;
+  color: #808080b7;
+  border-radius: 10px;
+}
+thead th {
+  border-bottom: none !important;
+}
+.table-hover tbody tr:hover {
+  color: #929292;
+  background-color: rgba(0, 0, 0, 0.075);
+}
+tbody tr:nth-child(1) {
+  display: none;
+}
+.scroll {
+  display: none;
+}
 @media (max-width: 574px) {
   .card {
     width: 20.5rem !important;
+  }
+  .scroll {
+    display: block;
+  }
+  .confirmed,
+  .c-active,
+  .recovered,
+  .deaths {
+    font-size: 0.8rem;
+  }
+  .confirmed h5,
+  .c-active h5,
+  .recovered h5,
+  .deaths h5 {
+    font-size: 1rem;
   }
 }

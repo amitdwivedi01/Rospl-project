@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Track-Corona</title>
+    <title>Cases in India</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -62,20 +62,30 @@
       </div>
     </nav>
     <div class="container">
-      <h1 class="text-white mt-4">Global</h1>
+      <h1 class="text-white mt-4">Covid-19 Cases in India</h1>
       <hr style="border-top: 2px solid rgb(231, 231, 231);" />
-      <div class="global__wrapper">
-        <div class="cases__global">
-          <div class="row" id="cases-global"></div>
+      <div id="time" style="color: aliceblue;"></div>
+      <div class="row text-white" id="india"></div>
+      <center>
+        <div class="scroll text-white">
+          &larr;&nbsp;&nbsp;&nbsp; Scroll to check &nbsp;&nbsp;&nbsp;&rarr;
         </div>
-      </div>
-      <h1 class="text-white mt-4">Cases By Country</h1>
-      <hr style="border-top: 2px solid rgb(231, 231, 231);" />
-      <div class="cases__wrapper">
-        <div class="cases">
-          <div class="row" id="cases"></div>
-        </div>
-      </div>
+      </center>
+      <table
+        class="table mt-3 table-borderless table-responsive-sm table-hover text-white"
+      >
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">State</th>
+            <th scope="col">Confirmed</th>
+            <th scope="col">Active</th>
+            <th scope="col">Recovered</th>
+            <th scope="col">Deaths</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
     </div>
     <script src="../js/app.js"></script>
     <script
