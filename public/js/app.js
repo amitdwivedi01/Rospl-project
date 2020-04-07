@@ -174,18 +174,49 @@ fetch("https://api.covid19india.org/data.json")
     </div>
     `;
     let i = 0;
-    data.statewise.forEach((item) => {
+    data.statewise.forEach((item, e) => {
       tbody.innerHTML += `
       <tr>
         <td>${i++}</td>
         <td>${item.state}</td>
-        <td>${item.confirmed}</td>
+        <td><span class="ml-2">${
+          item.confirmed
+        }</span>&nbsp;&nbsp;<span id="delta-con${i}" class="delta-con" style="color: #fc1c20;">&uarr;${
+        item.deltaconfirmed
+      }</span></td>
         <td>${item.active}</td>
-        <td>${item.recovered}</td>
-        <td>${item.deaths}</td>
+        <td><span class="ml-2">${
+          item.recovered
+        }</span>&nbsp;&nbsp;<span id="delta-rev${i}" class="delta-rev" style="color: #07ff66b0;">&uarr;${
+        item.deltarecovered
+      }</span></td>
+        <td><span class="ml-2">${
+          item.deaths
+        }</span>&nbsp;&nbsp;<span id="delta-dea${i}" class="delta-dea" style="color: #808080af;">&uarr;${
+        item.deltadeaths
+      }</span></td>
       </tr>
     `;
+      let delta_con = parseInt(
+        document.getElementById(`delta-con${i}`).textContent.slice(1)
+      );
+      let delta_rev = parseInt(
+        document.getElementById(`delta-rev${i}`).textContent.slice(1)
+      );
+      let delta_dea = parseInt(
+        document.getElementById(`delta-dea${i}`).textContent.slice(1)
+      );
+      if (delta_con == 0) {
+        document.getElementById(`delta-con${i}`).style.display = "none";
+      }
+      if (delta_rev == 0) {
+        document.getElementById(`delta-rev${i}`).style.display = "none";
+      }
+      if (delta_dea == 0) {
+        document.getElementById(`delta-dea${i}`).style.display = "none";
+      }
     });
+
     tbody.innerHTML += `
     <tr>
       <td></td>

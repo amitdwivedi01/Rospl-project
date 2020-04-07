@@ -7,6 +7,9 @@ body {
   border-radius: 10px !important;
   color: #fff;
 }
+.c-pointer {
+  cursor: pointer;
+}
 .form-control {
   border-radius: 0;
   height: 45px;
@@ -26,15 +29,15 @@ body {
   font-weight: 300;
 }
 .confirmed {
-  border: 2px solid #ff073985;
+  border: 2px solid #ff0739c5;
   background: transparent;
-  color: #ff0739b0;
+  color: #ff0739d0;
   border-radius: 10px;
 }
 .c-active {
-  border: 2px solid #078fff8e;
+  border: 2px solid #078fffc0;
   background: transparent;
-  color: #078fffb0;
+  color: #078fffce;
   border-radius: 10px;
 }
 .recovered {
@@ -44,16 +47,16 @@ body {
   border-radius: 10px;
 }
 .deaths {
-  border: 2px solid #8080808c;
+  border: 2px solid #808080af;
   background: transparent;
-  color: #808080b7;
+  color: #808080d0;
   border-radius: 10px;
 }
-thead th {
-  border-bottom: none !important;
+table {
+  border: 1.4px solid #fff;
 }
 .table-hover tbody tr:hover {
-  color: #929292;
+  color: #b9b1b1;
   background-color: rgba(0, 0, 0, 0.075);
 }
 tbody tr:nth-child(1) {
