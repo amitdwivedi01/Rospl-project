@@ -33,31 +33,74 @@ body {
   background: transparent;
   color: #ff0739d0;
   border-radius: 10px;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+.confirmed:hover {
+  border: none;
+  box-shadow: 0 5px 10px #ff073970;
+  background: #ff0739d0;
+  color: #fff;
+  transform: translateY(-8px);
+  border-radius: 10px;
 }
 .c-active {
   border: 2px solid #078fffc0;
   background: transparent;
   color: #078fffce;
   border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.c-active:hover {
+  border: none;
+  background: #078fffce;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px #078fff63;
+  transform: translateY(-8px);
 }
 .recovered {
   border: 2px solid #07ff6686;
   background: transparent;
   color: #07ff66b0;
   border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.recovered:hover {
+  border: none;
+  background: #07ff66b0;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px #07ff6671;
+  transform: translateY(-8px);
 }
 .deaths {
   border: 2px solid #808080af;
   background: transparent;
   color: #808080d0;
   border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.deaths:hover {
+  border: none;
+  background: #808080d0;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px #80808077;
+  transform: translateY(-8px);
 }
 table {
   border: 1.4px solid #fff;
 }
 .table-hover tbody tr:hover {
-  color: #b9b1b1;
-  background-color: rgba(0, 0, 0, 0.075);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.075);
 }
 tbody tr:nth-child(1) {
   display: none;

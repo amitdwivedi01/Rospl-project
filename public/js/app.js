@@ -151,8 +151,6 @@ fetch("https://api.covid19india.org/data.json")
         <p>${data.statewise[0].active}</p>
       </div>
     </div>
-    
-    
   `;
     india.innerHTML += `
     <div class="card m-3  recovered">
@@ -161,9 +159,7 @@ fetch("https://api.covid19india.org/data.json")
         <p>${data.statewise[0].recovered} [+${data.statewise[0].deltarecovered}]</p>
       </div>
     </div>
-    
-    
- 
+
   `;
     india.innerHTML += `
     <div class="card m-3  deaths">
@@ -174,11 +170,11 @@ fetch("https://api.covid19india.org/data.json")
     </div>
     `;
     let i = 0;
-    data.statewise.forEach((item, e) => {
+    data.statewise.forEach((item, j) => {
       tbody.innerHTML += `
       <tr>
         <td>${i++}</td>
-        <td>${item.state}</td>
+        <td class="state">${item.state}</td>
         <td><span class="ml-2">${
           item.confirmed
         }</span>&nbsp;&nbsp;<span id="delta-con${i}" class="delta-con" style="color: #fc1c20;">&uarr;${
@@ -190,6 +186,7 @@ fetch("https://api.covid19india.org/data.json")
         }</span>&nbsp;&nbsp;<span id="delta-rev${i}" class="delta-rev" style="color: #07ff66b0;">&uarr;${
         item.deltarecovered
       }</span></td>
+
         <td><span class="ml-2">${
           item.deaths
         }</span>&nbsp;&nbsp;<span id="delta-dea${i}" class="delta-dea" style="color: #808080af;">&uarr;${
@@ -197,6 +194,22 @@ fetch("https://api.covid19india.org/data.json")
       }</span></td>
       </tr>
     `;
+      var listItems = document.querySelectorAll(".state");
+
+      listItems.forEach(function (item) {
+        item.onclick = function () {
+          alert(this.textContent);
+          let val = this.textContent;
+          fetch("https://api.covid19india.org/state_district_wise.json")
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(val);
+              console.log(data);
+              console.log(data.val);
+            });
+        };
+      });
+
       let delta_con = parseInt(
         document.getElementById(`delta-con${i}`).textContent.slice(1)
       );
@@ -216,17 +229,6 @@ fetch("https://api.covid19india.org/data.json")
         document.getElementById(`delta-dea${i}`).style.display = "none";
       }
     });
-
-    tbody.innerHTML += `
-    <tr>
-      <td></td>
-      <td>${data.statewise[0].state}</td>
-      <td>${data.statewise[0].confirmed}</td>
-      <td>${data.statewise[0].active}</td>
-      <td>${data.statewise[0].recovered}</td>
-      <td>${data.statewise[0].deaths}</td>
-    </tr>
-    `;
   })
   .catch((err) => {
     console.log(err);
