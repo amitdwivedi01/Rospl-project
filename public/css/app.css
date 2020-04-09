@@ -98,11 +98,11 @@ body {
 table {
   border: 1.4px solid #fff;
 }
-.table-hover tbody tr:hover {
+.table-hover tbody tr#states_cases:hover {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.075);
 }
-tbody tr:nth-child(1) {
+tbody tr#states_cases:nth-child(1) {
   display: none;
 }
 .scroll {

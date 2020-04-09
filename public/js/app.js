@@ -172,22 +172,24 @@ fetch("https://api.covid19india.org/data.json")
     let i = 0;
     data.statewise.forEach((item, j) => {
       tbody.innerHTML += `
-      <tr>
+      <tr id="states_cases">
         <td>${i++}</td>
-        <td class="state">${item.state}</td>
-        <td><span class="ml-2">${
+        <td class="state" data-toggle="modal" data-target="#exampleModalScrollable">${
+          item.state
+        }</td>
+        <td><span class="confirmed_cases ml-2">${
           item.confirmed
         }</span>&nbsp;&nbsp;<span id="delta-con${i}" class="delta-con" style="color: #fc1c20;">&uarr;${
         item.deltaconfirmed
       }</span></td>
-        <td>${item.active}</td>
-        <td><span class="ml-2">${
+        <td><span class="active_cases">${item.active}</span></td>
+        <td><span class="recovered_cases ml-2">${
           item.recovered
         }</span>&nbsp;&nbsp;<span id="delta-rev${i}" class="delta-rev" style="color: #07ff66b0;">&uarr;${
         item.deltarecovered
       }</span></td>
 
-        <td><span class="ml-2">${
+        <td><span class="deaths_cases ml-2">${
           item.deaths
         }</span>&nbsp;&nbsp;<span id="delta-dea${i}" class="delta-dea" style="color: #808080af;">&uarr;${
         item.deltadeaths
@@ -198,18 +200,71 @@ fetch("https://api.covid19india.org/data.json")
 
       listItems.forEach(function (item) {
         item.onclick = function () {
-          alert(this.textContent);
+          // alert(this.textContent);
           let val = this.textContent;
           fetch("https://api.covid19india.org/state_district_wise.json")
             .then((res) => res.json())
             .then((data) => {
               console.log(val);
               console.log(data);
-              console.log(data.val);
+              console.log(data[val]);
+              let arr = [];
+              arr.push(data[val].districtData);
+
+              document.getElementById("modal-body").innerHTML = `
+                ${val}
+                
+                <table class="table text-dark mt-3 table-borderless table-responsive-sm table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">District</th>
+                      <th scope="col">Confirmed</th>
+                    </tr>
+                  </thead>
+                    <tbody class="h-100" id="tbody-district"></tbody>
+                </table>
+              `;
+              arr.forEach((districts) => {
+                console.log(districts);
+
+                Object.keys(districts).forEach((item) => {
+                  console.log(item);
+                  let confirmed = districts[item].confirmed;
+                  document.getElementById("tbody-district").innerHTML += `
+                <tr>
+                  <td>${item}</td>
+                  <td>${confirmed}</td>
+                </tr>
+              `;
+                });
+              });
             });
         };
       });
-
+      let confirmed_cases = document.querySelectorAll(".confirmed_cases");
+      confirmed_cases.forEach((item) => {
+        if (item.textContent == 0) {
+          item.textContent = "-";
+        }
+      });
+      let active_cases = document.querySelectorAll(".active_cases");
+      active_cases.forEach((item) => {
+        if (item.textContent == 0) {
+          item.textContent = "-";
+        }
+      });
+      let recovered_cases = document.querySelectorAll(".recovered_cases");
+      recovered_cases.forEach((item) => {
+        if (item.textContent == 0) {
+          item.textContent = "-";
+        }
+      });
+      let deaths_cases = document.querySelectorAll(".deaths_cases");
+      deaths_cases.forEach((item) => {
+        if (item.textContent == 0) {
+          item.textContent = "-";
+        }
+      });
       let delta_con = parseInt(
         document.getElementById(`delta-con${i}`).textContent.slice(1)
       );
