@@ -108,6 +108,9 @@ tbody tr#states_cases:nth-child(1) {
 .scroll {
   display: none;
 }
+.state {
+  text-decoration: underline;
+}
 @media (max-width: 574px) {
   .card {
     width: 20.5rem !important;
